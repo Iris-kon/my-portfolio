@@ -1,11 +1,14 @@
 import React from 'react'
+import { About } from './components/About'
+import { Home } from './components/Home'
 import { NavbAr } from './components/Navbar'
 
 function App() {
   return (
     <div>
       <NavbAr />
-      <h1 className="text-3xl font-bold underline">Hello</h1>
+      <Home />
+      <About />
     </div>
   )
 }
