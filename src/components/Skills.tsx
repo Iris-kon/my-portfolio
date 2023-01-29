@@ -12,32 +12,32 @@ export function Skills() {
         </div>
 
         <div className="w-full grid grid-cols-2 sm:grid-cols-6 gap-4 text-center py-8">
-          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
+          <div className="rounded shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
             <DiHtml5 size={120} color="#e34c26" />
             <p className="my-4">HTML</p>
           </div>
 
-          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
+          <div className="rounded shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
             <DiCss3 size={120} color="#264de4" />
             <p className="my-4">CSS</p>
           </div>
 
-          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
+          <div className="rounded  shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
             <SiTypescript className="my-4" size={90} color="#3178c6" />
             <p className="my-4">TypeScript</p>
           </div>
 
-          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
+          <div className="rounded shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
             <DiReact size={120} color="#61DBFB" />
             <p className="my-4">React</p>
           </div>
 
-          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
+          <div className="rounded shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
             <DiNodejsSmall size={120} color=" #68a063" />
             <p className="my-4">Node</p>
           </div>
 
-          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
+          <div className="rounded shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex flex-col justify-center items-center">
             <DiPostgresql size={120} color="#0064a5" />
             <p className="my-4">Postgres</p>
           </div>

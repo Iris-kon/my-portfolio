@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
-import { BsFillPersonLinesFill } from 'react-icons/bs'
+import { Link } from 'react-scroll'
 
 export function NavbAr() {
   const [nav, setNav] = useState(false)
@@ -13,17 +13,37 @@ export function NavbAr() {
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300">
       <div>
-        <h1 className="">TO</h1>
+        <h1 className="text-4xl font-bold border-y-4 border-pink-600">TO</h1>
       </div>
 
       {/*  Menu */}
 
       <ul className="hidden md:flex">
-        <li>Home</li>
-        <li>About</li>
-        <li>Skils</li>
-        <li>Work</li>
-        <li>Contact</li>
+        <li>
+          <Link to="home" smooth={true} duration={500}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="about" smooth={true} duration={500}>
+            About
+          </Link>
+        </li>
+        <li>
+          <Link to="skills" smooth={true} duration={500}>
+            Skills
+          </Link>
+        </li>
+        <li>
+          <Link to="work" smooth={true} duration={500}>
+            Work
+          </Link>
+        </li>
+        <li>
+          <Link to="contact" smooth={true} duration={500}>
+            Contact
+          </Link>
+        </li>
       </ul>
 
       {/*  Hamburger */}
@@ -38,11 +58,31 @@ export function NavbAr() {
             ? 'hidden'
             : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'
         }>
-        <li className="py-6 text-4xl">Home</li>
-        <li className="py-6 text-4xl">About</li>
-        <li className="py-6 text-4xl">Skils</li>
-        <li className="py-6 text-4xl">Work</li>
-        <li className="py-6 text-4xl">Contact</li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleNavbarClick} to="home" smooth={true} duration={500}>
+            Home
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleNavbarClick} to="about" smooth={true} duration={500}>
+            About
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleNavbarClick} to="skills" smooth={true} duration={500}>
+            Skills
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleNavbarClick} to="work" smooth={true} duration={500}>
+            Work
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleNavbarClick} to="contact" smooth={true} duration={500}>
+            Contact
+          </Link>
+        </li>
       </ul>
 
       {/*  Socials icons */}
@@ -67,11 +107,6 @@ export function NavbAr() {
               className="flex justify-between items-center w-full text-gray-300"
               href="mailto:thiagooliveira.k.on@gmail.com">
               Mail <HiOutlineMail size={30} />
-            </a>
-          </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-gray-600">
-            <a className="flex justify-between items-center w-full text-gray-300" href="/">
-              Resume <BsFillPersonLinesFill size={30} />
             </a>
           </li>
         </ul>
