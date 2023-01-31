@@ -4,7 +4,7 @@ import { WorkModal } from './WorkModal'
 
 import IgNewsImg from '../assets/projects/ignews.png'
 import MendesImg from '../assets/projects/mendes-contabilidade.png'
-import tasksImg from '../assets/projects/tasks-home.jpg'
+import tasksImg from '../assets/projects/tasks-login.jpg'
 
 const works = [
   {

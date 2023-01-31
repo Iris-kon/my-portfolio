@@ -12,16 +12,20 @@ interface WorkModalProps {
 
 export function WorkModal({ title, text, image, gitURL, liveURL, closeModal }: WorkModalProps) {
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center">
-      <div className="w-3/4 max-w-[600px] rounded bg-[#0a192f] text-gray-300">
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 h-full w-full flex justify-center items-center">
+      <div className="overflow-auto w-3/4 max-h-[700px] max-w-[600px] rounded bg-[#0a192f] text-gray-300">
         <div className="p-4 flex justify-between items-center">
           <p className="text-2xl font-bold">{title}</p>
           <button onClick={closeModal}>
             <FaTimes className="m-l-4" />
           </button>
         </div>
-        <div>
-          <img className="w-full h-2/3 object-cover" src={image} alt={`${title} image`} />
+        <div className="overflow-auto">
+          <img
+            className="w-full h-2/3 max-h-[450px] object-cover"
+            src={image}
+            alt={`${title} image`}
+          />
         </div>
         <div className="m-4 ">
           <p>{text}</p>
