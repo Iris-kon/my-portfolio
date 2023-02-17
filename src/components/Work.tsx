@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { WorkModal } from './WorkModal'
 
 import IgNewsImg from '../assets/projects/ignews.png'
 import MendesImg from '../assets/projects/mendes-contabilidade.png'
 import tasksImg from '../assets/projects/tasks-login.jpg'
+import { api } from '../services/strapi'
 
-const works = [
+const staticworks = [
   {
     image: MendesImg,
     title: 'NextJs LandingPage',
@@ -28,9 +29,43 @@ const works = [
   }
 ]
 
+interface IWorks {
+  attributes: {
+    id: number
+    images: {
+      data: {
+        id: number
+        attributes: {
+          name: string
+          url: string
+        }
+      }[]
+    }
+    title: string
+    description: string
+    liveUrl?: string
+    gitUrl?: string
+  }
+}
+
 export function Work() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [dataIndex, setDataIndex] = useState(0)
+  const [works, setWorks] = useState<IWorks[]>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await api.get('/api/works', {
+        params: {
+          populate: `*`
+        }
+      })
+      console.log(result.data.data)
+      setWorks(result.data.data)
+    }
+
+    fetchData()
+  }, [])
 
   function openModal(index: number) {
     setIsModalOpen(true)
@@ -50,35 +85,40 @@ export function Work() {
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {works.map((work, index) => (
-            <div
-              key={index}
-              style={{ backgroundImage: `url(${work.image})` }}
-              className="shadow-lg shadow-[#040c16] group container text-center rounded-md flex justify-center items-center mx-auto content-div">
-              {/* Hover Effects */}
+          {!!works &&
+            works.map((work, index) => (
+              <div
+                key={index}
+                style={{
+                  backgroundImage: `url(http://localhost:1337${work.attributes.images.data[0].attributes.url})`
+                }}
+                className="shadow-lg shadow-[#040c16] group container text-center rounded-md flex justify-center items-center mx-auto content-div">
+                {/* Hover Effects */}
 
-              <div className="opacity-0 group-hover:opacity-100">
-                <p className="text-2xl font-bold  text-white tracking-wider">{work.title}</p>
-                <div className="pt-8 text-center">
-                  <button
-                    onClick={() => openModal(index)}
-                    className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    See More
-                  </button>
+                <div className="opacity-0 group-hover:opacity-100">
+                  <p className="text-2xl font-bold  text-white tracking-wider">
+                    {work.attributes.title}
+                  </p>
+                  <div className="pt-8 text-center">
+                    <button
+                      onClick={() => openModal(index)}
+                      className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
+                      See More
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
-      {isModalOpen ? (
+      {isModalOpen && !!works ? (
         <WorkModal
-          image={works[dataIndex].image}
-          title={works[dataIndex].title}
+          image={`http://localhost:1337${works[dataIndex].attributes.images.data[0].attributes.url}`}
+          title={works[dataIndex].attributes.title}
           closeModal={closeModal}
-          gitURL={works[dataIndex].gitURL}
-          liveURL={works[dataIndex].liveURL}
-          text={works[dataIndex].text}
+          gitURL={works[dataIndex].attributes.gitUrl}
+          liveURL={works[dataIndex].attributes.liveUrl}
+          text={works[dataIndex].attributes.description}
         />
       ) : null}
     </div>
