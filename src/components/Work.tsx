@@ -2,32 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { WorkModal } from './WorkModal'
 
-import IgNewsImg from '../assets/projects/ignews.png'
-import MendesImg from '../assets/projects/mendes-contabilidade.png'
-import tasksImg from '../assets/projects/tasks-login.jpg'
 import { api } from '../services/strapi'
-
-const staticworks = [
-  {
-    image: MendesImg,
-    title: 'NextJs LandingPage',
-    liveURL: 'https://mendes-contabilidade.com/',
-    text: 'Web app created with NextJs for a accountant business, using googleMapsApi to get the map and the reviews for the place, contact by mail send with nodemailer.'
-  },
-  {
-    image: IgNewsImg,
-    title: 'NextJs news portal with subscriptions',
-    gitURL: 'https://github.com/Thiago-kon/ignews',
-    liveURL: 'https://ignews-fawn-kappa.vercel.app/',
-    text: 'Web app created with NextJs for news with subscription service, using stripe integration to do the subscriptions and faunaDb to handle the data of the user with their subscription, authentication made with NextAuth using github'
-  },
-  {
-    image: tasksImg,
-    title: 'React native and node app',
-    gitURL: 'https://github.com/Thiago-kon/Tasks',
-    text: 'Full stack app with react native and nodejs/express for manage tasks that you have to do in certain periods(today/tomorrow/week/month), using passport to manage authentication, knex to operate with the postgres DB.'
-  }
-]
 
 interface IWorks {
   attributes: {
@@ -113,7 +88,12 @@ export function Work() {
       </div>
       {isModalOpen && !!works ? (
         <WorkModal
-          image={`http://localhost:1337${works[dataIndex].attributes.images.data[0].attributes.url}`}
+          images={works[dataIndex].attributes.images.data.map((img) => {
+            return {
+              url: `http://localhost:1337${img.attributes.url}`,
+              name: img.attributes.name
+            }
+          })}
           title={works[dataIndex].attributes.title}
           closeModal={closeModal}
           gitURL={works[dataIndex].attributes.gitUrl}

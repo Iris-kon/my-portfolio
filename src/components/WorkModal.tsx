@@ -1,16 +1,24 @@
 import React from 'react'
 import { FaTimes } from 'react-icons/fa'
+import { Navigation } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/navigation'
 
 interface WorkModalProps {
   title: string
   text: string
-  image: string
+  images: {
+    name: string
+    url: string
+  }[]
   gitURL?: string
   liveURL?: string
   closeModal: () => void
 }
 
-export function WorkModal({ title, text, image, gitURL, liveURL, closeModal }: WorkModalProps) {
+export function WorkModal({ title, text, images, gitURL, liveURL, closeModal }: WorkModalProps) {
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 h-full w-full flex justify-center items-center">
       <div className="overflow-auto w-3/4 max-h-[700px] max-w-[600px] rounded bg-[#0a192f] text-gray-300">
@@ -21,11 +29,17 @@ export function WorkModal({ title, text, image, gitURL, liveURL, closeModal }: W
           </button>
         </div>
         <div className="overflow-auto">
-          <img
-            className="w-full h-2/3 max-h-[450px] object-cover"
-            src={image}
-            alt={`${title} image`}
-          />
+          <Swiper navigation={true} loop={true} modules={[Navigation]} className="mySwiper">
+            {images.map((img) => (
+              <SwiperSlide key={img.url}>
+                <img
+                  className="w-full h-2/3 max-h-[450px] object-cover"
+                  src={img.url}
+                  alt={`${img.name} image`}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
         <div className="m-4 ">
           <p>{text}</p>
