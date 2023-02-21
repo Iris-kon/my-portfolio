@@ -2,12 +2,18 @@ import React, { useState } from 'react'
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import { Link } from 'react-scroll'
+import { useTranslation } from 'react-i18next'
 
 export function NavbAr() {
   const [nav, setNav] = useState(false)
+  const { t, i18n } = useTranslation()
 
   function handleNavbarClick() {
     setNav(!nav)
+  }
+
+  function changeLanguage(language: string) {
+    i18n.changeLanguage(language)
   }
 
   return (
@@ -21,7 +27,7 @@ export function NavbAr() {
       <ul className="hidden md:flex">
         <li>
           <Link to="home" smooth={true} duration={500}>
-            Home
+            {t('navigation.home')}
           </Link>
         </li>
         <li>
