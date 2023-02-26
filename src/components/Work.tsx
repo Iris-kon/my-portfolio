@@ -38,7 +38,6 @@ export function Work() {
           locale: i18n.language
         }
       })
-      console.log(result.data.data)
       setWorks(result.data.data)
     }
 
