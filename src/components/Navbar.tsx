@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaBars, FaTimes, FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import { Link } from 'react-scroll'
 import { useTranslation } from 'react-i18next'
@@ -169,6 +169,17 @@ export function NavbAr() {
               className="flex justify-between items-center w-full text-gray-300"
               href="mailto:thiagooliveira.k.on@gmail.com">
               Mail <HiOutlineMail size={30} />
+            </a>
+          </li>
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#25d366]">
+            <a
+              className="flex justify-between items-center w-full text-gray-300"
+              href={
+                i18n.language === 'pt-BR'
+                  ? 'https://api.whatsapp.com/send?phone=5542988244413&text=Olá,%20acessei%20o%20seu%20portifolio, e gostaria de ...'
+                  : 'https://api.whatsapp.com/send?phone=5542988244413&text=Hello,%20aI%20acessed%20your%20portfolio, and i do like to ...'
+              }>
+              Whatsapp <FaWhatsapp size={30} />
             </a>
           </li>
         </ul>
