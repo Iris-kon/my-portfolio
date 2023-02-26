@@ -43,7 +43,7 @@ export function Work() {
     }
 
     fetchData()
-  }, [])
+  }, [i18n.language])
 
   function openModal(index: number) {
     setIsModalOpen(true)
