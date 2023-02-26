@@ -32,23 +32,49 @@ export function NavbAr() {
         </li>
         <li>
           <Link to="about" smooth={true} duration={500}>
-            About
+            {t('navigation.about')}
           </Link>
         </li>
         <li>
           <Link to="skills" smooth={true} duration={500}>
-            Skills
+            {t('navigation.skills')}
           </Link>
         </li>
         <li>
           <Link to="work" smooth={true} duration={500}>
-            Work
+            {t('navigation.work')}
           </Link>
         </li>
         <li>
           <Link to="contact" smooth={true} duration={500}>
-            Contact
+            {t('navigation.contact')}
           </Link>
+        </li>
+        <li
+          className={`flex items-center gap-1 ${i18n.language === 'pt-BR' ? 'underline' : ''}`}
+          onClick={() => changeLanguage('pt-BR')}>
+          <img
+            src="https://flagcdn.com/32x24/br.png"
+            srcSet="https://flagcdn.com/64x48/br.png 2x,
+    https://flagcdn.com/96x72/br.png 3x"
+            width="32"
+            height="24"
+            alt="Brasil"
+          />
+          <span>Português</span>
+        </li>
+        <li
+          className={`flex items-center gap-1 ${i18n.language === 'en' ? 'underline' : ''}`}
+          onClick={() => changeLanguage('en')}>
+          <img
+            src="https://flagcdn.com/32x24/us.png"
+            srcSet="https://flagcdn.com/64x48/us.png 2x,
+    https://flagcdn.com/96x72/us.png 3x"
+            width="32"
+            height="24"
+            alt="United States"
+          />
+          <span>English</span>
         </li>
       </ul>
 
@@ -88,6 +114,28 @@ export function NavbAr() {
           <Link onClick={handleNavbarClick} to="contact" smooth={true} duration={500}>
             Contact
           </Link>
+        </li>
+        <li className="py-6 text-4xl flex items-center gap-1">
+          <img
+            src="https://flagcdn.com/32x24/br.png"
+            srcSet="https://flagcdn.com/64x48/br.png 2x,
+    https://flagcdn.com/96x72/br.png 3x"
+            width="32"
+            height="24"
+            alt="Brasil"
+          />
+          <span>Português</span>
+        </li>
+        <li className="py-6 text-4xl flex items-center gap-1">
+          <img
+            src="https://flagcdn.com/32x24/us.png"
+            srcSet="https://flagcdn.com/64x48/us.png 2x,
+    https://flagcdn.com/96x72/us.png 3x"
+            width="32"
+            height="24"
+            alt="United States"
+          />
+          <span>English</span>
         </li>
       </ul>
 
