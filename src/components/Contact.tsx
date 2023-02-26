@@ -1,18 +1,20 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 export function Contact() {
+  const { t } = useTranslation()
   return (
     <div id="contact" className="w-full h-screen bg-[#0a192f] flex justify-center items-center p-4">
       <form
         action="https://getform.io/f/329944e7-3745-4051-8802-cbe1bc3c2294"
         method="POST"
-        className="flex flex-col max-w-[600px] w-full">
+        className="flex flex-col max-w-[1000px] w-full">
         <div className="pb-8">
           <p className="text-4xl font-bold inline border-b-4 border-pink-600 text-gray-300">
-            Contact
+            {t('contact.title')}
           </p>
           <p className="py-4 text-gray-300">
-            &#47;&#47; Submit the form bellow or shoot me an email - thiagooliveira.k.on@gmail.com
+            {t('contact.subtitle')} - thiagooliveira.k.on@gmail.com
           </p>
         </div>
 
@@ -40,7 +42,7 @@ export function Contact() {
         <button
           className="rounded text-white border-2 hover:bg-pink-600 hover:border-pink-600 px-4 py-3 my-8 mx-auto flex items-center"
           type="submit">
-          Let&rsquo;s Colaborate
+          {t('buttons.contact')}
         </button>
       </form>
     </div>

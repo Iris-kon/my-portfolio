@@ -1,14 +1,18 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { DiHtml5, DiCss3, DiReact, DiNodejsSmall, DiPostgresql } from 'react-icons/di'
 import { SiTypescript } from 'react-icons/si'
 
 export function Skills() {
+  const { t } = useTranslation()
   return (
     <div id="skills" className="w-full h-screen bg-[#0a192f] text-gray-300">
       <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
         <div>
-          <p className="text-4xl font-bold border-b-4 border-pink-600 inline">Skills</p>
-          <p className="py-6">&#47;&#47; These are the technologies I&rsquo;ve worked with</p>
+          <p className="text-4xl font-bold border-b-4 border-pink-600 inline">
+            {t('skills.title')}{' '}
+          </p>
+          <p className="py-6">{t('skills.subtitle')} </p>
         </div>
 
         <div className="w-full grid grid-cols-2 sm:grid-cols-6 gap-4 text-center py-8">

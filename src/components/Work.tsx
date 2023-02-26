@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { WorkModal } from './WorkModal'
 
 import { api } from '../services/strapi'
+import { useTranslation } from 'react-i18next'
 
 interface IWorks {
   attributes: {
@@ -24,6 +25,7 @@ interface IWorks {
 }
 
 export function Work() {
+  const { t } = useTranslation()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [dataIndex, setDataIndex] = useState(0)
   const [works, setWorks] = useState<IWorks[]>([])
@@ -55,8 +57,8 @@ export function Work() {
     <div id="work" className="w-full md:h-screen bg-[#0a192f] text-gray-300">
       <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
         <div className="pb-8">
-          <p className="text-4xl font-bold inline border-b-4 border-pink-600">Work</p>
-          <p className="py-6">&#47;&#47; Check out some of my recent work</p>
+          <p className="text-4xl font-bold inline border-b-4 border-pink-600">{t('work.title')} </p>
+          <p className="py-6">{t('work.subtitle')} </p>
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -78,7 +80,7 @@ export function Work() {
                     <button
                       onClick={() => openModal(index)}
                       className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                      See More
+                      {t('buttons.seeMore')}
                     </button>
                   </div>
                 </div>
