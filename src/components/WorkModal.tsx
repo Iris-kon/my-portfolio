@@ -29,11 +29,15 @@ export function WorkModal({ title, text, images, gitURL, liveURL, closeModal }: 
           </button>
         </div>
         <div className="overflow-auto">
-          <Swiper navigation={true} loop={true} modules={[Navigation]} className="mySwiper">
+          <Swiper
+            navigation={true}
+            loop={true}
+            modules={[Navigation]}
+            className="mySwiper max-h-[350px]">
             {images.map((img) => (
               <SwiperSlide key={img.url}>
                 <img
-                  className="w-full h-2/3 max-h-[450px] object-cover"
+                  className="w-full h-2/3 max-h-[350px] object-cover"
                   src={img.url}
                   alt={`${img.name} image`}
                 />

@@ -25,7 +25,7 @@ interface IWorks {
 }
 
 export function Work() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [dataIndex, setDataIndex] = useState(0)
   const [works, setWorks] = useState<IWorks[]>([])
@@ -34,7 +34,8 @@ export function Work() {
     const fetchData = async () => {
       const result = await api.get('/api/works', {
         params: {
-          populate: `*`
+          populate: `*`,
+          locale: i18n.language
         }
       })
       console.log(result.data.data)
