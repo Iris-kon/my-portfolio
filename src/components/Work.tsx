@@ -67,7 +67,7 @@ export function Work() {
               <div
                 key={index}
                 style={{
-                  backgroundImage: `url(http://localhost:1337${work.attributes.images.data[0].attributes.url})`
+                  backgroundImage: `url(${work.attributes.images.data[0].attributes.url})`
                 }}
                 className="shadow-lg shadow-[#040c16] group container text-center rounded-md flex justify-center items-center mx-auto content-div">
                 {/* Hover Effects */}
@@ -92,7 +92,7 @@ export function Work() {
         <WorkModal
           images={works[dataIndex].attributes.images.data.map((img) => {
             return {
-              url: `http://localhost:1337${img.attributes.url}`,
+              url: img.attributes.url,
               name: img.attributes.name
             }
           })}
